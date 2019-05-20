@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/india_news"
+        android:title="Indian News"
+        android:onClick="onItemClick"/>
+
+    <item android:id="@+id/us_news"
+        android:title="US News"
+        android:onClick="onItemClick"/>
+
+    <item android:id="@+id/canada_news"
+        android:title="Canadian News"
+        android:onClick="onItemClick"/>
+
+</menu>
