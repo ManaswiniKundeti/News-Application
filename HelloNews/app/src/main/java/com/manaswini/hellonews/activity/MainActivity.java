@@ -1,5 +1,7 @@
 package com.manaswini.hellonews.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ListView mListView;
 
     @BindView(R.id.news_progress_bar)
-    private ProgressBar mNewsProgressBar;
+    ProgressBar mNewsProgressBar;
 
     private NewsService mNewsService;
 
@@ -57,8 +59,26 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle(getString(R.string.activity_main_title));
 
-        newsAdapter = new com.manaswini.hellonews.adapter.ListAdapter(this,newsList);
+        newsAdapter = new ListAdapter(this,newsList);
         mListView.setAdapter(newsAdapter);
+
+        mListView.setOnItemClickListener((parent, view, position, id) -> {
+            Context context = MainActivity.this;
+            Class destinationActivity = NewsDetailsActivity.class;
+            Intent createNewsDetailActivityIntent = new Intent(context, destinationActivity);
+
+            News selectedItem = newsAdapter.getItem(position);
+
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_TITLE,selectedItem.getmNewsTitle());
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_IMAGE,selectedItem.getmNewsImage());
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_AUTHOR,selectedItem.getmNewsAuthor());
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_DESCRIPTION,selectedItem.getmDescription());
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_BROWSER_LINK,selectedItem.getmBrowserLink());
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_DATE,selectedItem.getmPublishedDate());
+            createNewsDetailActivityIntent.putExtra(NewsDetailsActivity.PARAM_NEWS_SOURCE_NAME,selectedItem.getmSource().getmSourceName());
+            startActivity(createNewsDetailActivityIntent);
+
+        });
 
 
     }
@@ -96,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         toggleProgressBar(true);
+
         Call<NewsResult> call = mNewsService.getNews(filter, RetrofitInstance.API_KEY);
 
         call.enqueue(new Callback<NewsResult>() {

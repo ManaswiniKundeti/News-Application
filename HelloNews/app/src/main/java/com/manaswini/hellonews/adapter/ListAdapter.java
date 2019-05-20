@@ -30,7 +30,7 @@ public class ListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public News getItem(int position) {
         return newsList.get(position);
     }
 

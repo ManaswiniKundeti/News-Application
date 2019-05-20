@@ -2,4 +2,5 @@
     <string name="app_name">Hello News</string>
     <string name="activity_main_title">News</string>
     <string name="activity_details_title">News Details</string>
+    <string name="news_details_menu">Share</string>
 </resources>

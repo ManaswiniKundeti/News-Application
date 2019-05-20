@@ -6,12 +6,13 @@
     android:layout_height="wrap_content"
     tools:context=".activity.NewsDetailsActivity"
     android:id="@+id/news_details"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/news_detail_image"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="220dp"
         android:layout_gravity="center"
         android:layout_weight="0.4" />
 
@@ -19,12 +20,11 @@
         android:id="@+id/news_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:ellipsize="end"
         tools:text="News Title"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:maxLines="2"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/news_detail_author_name"
@@ -33,17 +33,18 @@
         android:gravity="right"
         android:ellipsize="end"
         tools:text="Author Name"
-        android:textSize="25sp"
+        android:textSize="16sp"
+        android:textStyle="italic"
         android:maxLines="1"/>
 
     <TextView
         android:id="@+id/news_detail_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:ellipsize="end"
         tools:text="News Description"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:layout_marginTop="30dp"/>
 
     <TextView
@@ -55,40 +56,31 @@
         tools:text="Browser Link"
         android:textSize="15sp"
         android:maxLines="2"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="70dp"
+        android:autoLink="web" />
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/news_detail_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:gravity="center_horizontal"
+        android:ellipsize="end"
+        tools:text="Date"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        android:layout_marginTop="20dp" />
 
-        <TextView
-            android:id="@+id/news_detail_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:ellipsize="end"
-            tools:text="Date"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.5"/>
-
-        <TextView
-            android:id="@+id/news_detail_source_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:ellipsize="end"
-            tools:text="News Title"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.5"/>
-    </LinearLayout>
-
-
-
-
+    <TextView
+        android:id="@+id/news_detail_source_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:ellipsize="end"
+        tools:text="News Title"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        android:layout_marginTop="5dp" />
 
 
 </LinearLayout>
