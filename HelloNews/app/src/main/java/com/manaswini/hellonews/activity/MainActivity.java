@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         newsAdapter = new ListAdapter(this,newsList);
         mListView.setAdapter(newsAdapter);
 
+
         mListView.setOnItemClickListener((parent, view, position, id) -> {
             Context context = MainActivity.this;
             Class destinationActivity = NewsDetailsActivity.class;
@@ -79,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(createNewsDetailActivityIntent);
 
         });
-
-
     }
 
     @Override
@@ -128,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful() && response.body() != null){
                     newsList.addAll(response.body().getNewsList());
                     newsAdapter.notifyDataSetChanged();
+                    mListView.smoothScrollToPosition(0);
                 }
             }
 
